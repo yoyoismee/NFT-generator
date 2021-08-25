@@ -13,16 +13,15 @@ args = parser.parse_args()
 
 component = os.listdir(args.input_dir)
 component = sorted(component)
-print(component)
 component = [glob(args.input_dir + f"/{c}/*.png") for c in component]
 component = [c for c in component if len(c) > 0]
+print(component)
 img_no = 0
 Path(args.output_dir).mkdir(parents=True, exist_ok=True)
 
 for _ in range(int(args.amount)):
     new_img = None
     for part in component:
-        # print(part)
         part_option = choice(part, 1)[0]
         tmp = Image.open(part_option)
         if new_img is None:
