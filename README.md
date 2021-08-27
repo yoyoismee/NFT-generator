@@ -7,11 +7,14 @@ buckle up and follow me!
 
 first have your image in .png (transparent background of course!)
 
-structure it in this way
-in a folder create a sub-folder for each part of your NFT
-layer will be sorted based on name
+structure it in this way.
+in a folder create a sub-folder for each part of your NFT.
+layer will be sorted based on name.
 for simplicity I would recommend `[layer no]_whatever`
-then in each sub-folder just put our part options in there
+then in each sub-folder just put our part options in there.
+
+
+for example.
 ```
 your_awesome_nft
 ├── 01_body
