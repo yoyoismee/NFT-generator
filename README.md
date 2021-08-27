@@ -3,7 +3,7 @@ this is the easiest way to generate a hell lotta image component
 
 buckle up and follow me!
 
-##how to
+## how to
 
 first have your image in .png (transparent background of course!)
 
