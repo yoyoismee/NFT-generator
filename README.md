@@ -35,3 +35,29 @@ run this stuff (don't worry I'm not gonna hack you LOL)
 pip3 install -r requirement.txt
 python3 generate.py [input_dir] [output_dir] [how many do ya want]
 ```
+
+## advance feature
+
+### animation
+`--animate` to activate feature
+
+
+`--fps` for fps default 4 
+
+`--n_frame` to specify no of frame you have. for now each part can be either static or animate, if animate each option must have `n_frame` in each folder
+
+the folder structure will be similar to normal one. but in each option you can have a sub-folder instate of a png.
+
+```
+stick_man_part
+├── 1_bg
+│   ├── bg_1.png
+│   └── bg_2.png
+└── 2_animate_part
+    ├── option1
+    │   ├── frame_1.png
+    │   └── frame_2.png
+    └── count_th
+        ├── frame_1.png
+        └── frame_2.png
+```
