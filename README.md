@@ -61,3 +61,10 @@ stick_man_part
         ├── frame_1.png
         └── frame_2.png
 ```
+
+### MISC
+my [FB](https://www.facebook.com/yoyoismee/) <- can talk to me, shill, or request new feature here.
+
+buy me coffee at `yoyoismee.eth` or `0x6647a7858a0B3846AbD5511e7b797Fc0a0c63a4b`
+
+(actually I might just use it to buy more NFT lol) 
