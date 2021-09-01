@@ -7,10 +7,10 @@ import os
 
 
 class NFTGenerator:
-    def __init__(self, input_dir, animate=False, n_frame=1, fps=1):
+    def __init__(self, input_dir, animate=False, n_frame=1, fps=1, reverse=False):
         self.input_dir = input_dir
         component = [p for p in os.listdir(self.input_dir) if not p.startswith('.')]
-        component = sorted(component)
+        component = sorted(component, reverse=reverse)
         component = [glob(self.input_dir + f"/{c}/*") for c in component]
         self.component = [c for c in component if len(c) > 0]
         self.n_frame = n_frame
