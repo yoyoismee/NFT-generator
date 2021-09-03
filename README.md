@@ -1,6 +1,6 @@
 # NFT generator
 
-this is the easiest way to generate a hell lotta image component
+this is the easiest way to generate a hell lotta image
 
 buckle up and follow me!
 
