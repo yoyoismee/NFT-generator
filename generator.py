@@ -10,7 +10,7 @@ from itertools import product
 class NFTGenerator:
     def __init__(self, input_dir, animate=False, n_frame=1, fps=1, reverse=False, unique=False):
         self.input_dir = input_dir
-        component = [p for p in os.listdir(self.input_dir) if not p.startswith('.')]
+        component = [p for p in os.listdir(self.input_dir) if not (p.startswith('.') or p.startswith('__'))]
         component = sorted(component, reverse=reverse)
         component = [glob(self.input_dir + f"/{c}/*") for c in component]
         self.component = [c for c in component if len(c) > 0]
@@ -33,7 +33,7 @@ class NFTGenerator:
 
         for i in range(len(parts)):
             if os.path.isdir(parts[i]):
-                parts[i] = [p for p in sorted(glob(parts[i] + '/*')) if not p.startswith('.')]
+                parts[i] = [p for p in sorted(glob(parts[i] + '/*')) if not (p.startswith('.') or p.startswith('__'))]
 
         for i in range(int(self.n_frame)):
             new_img = None

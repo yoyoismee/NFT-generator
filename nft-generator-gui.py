@@ -19,6 +19,8 @@ with st.sidebar:
     with st.form(key="generate?"):
         amount = st.number_input('amount', 1)
         output_dir = st.text_input('output dir', 'generated')
+        unique = st.checkbox("unique mode")
+        st.write('*unique mode will generate in order (not random)')
         submit_button = st.form_submit_button(label='go go')
 
 if submit_button:
@@ -29,12 +31,12 @@ if submit_button:
     p.mkdir(parents=True, exist_ok=True)
     the_bar = st.progress(0)
     if is_animate:
-        nft_generator = NFTGenerator(input_dir=input_dir, animate=is_animate, fps=fps, n_frame=n_frame)
+        nft_generator = NFTGenerator(input_dir=input_dir, animate=is_animate, fps=fps, n_frame=n_frame, unique=unique)
         for i in range(amount):
             the_bar.progress((i + 1) / amount)
             nft_generator.generate(save_path=output_dir, file_name=i)
     else:
-        nft_generator = NFTGenerator(input_dir=input_dir)
+        nft_generator = NFTGenerator(input_dir=input_dir, unique=unique)
         for i in range(amount):
             the_bar.progress((i + 1) / amount)
             nft_generator.generate(save_path=output_dir, file_name=i)
@@ -43,10 +45,10 @@ if submit_button:
 
 if test:
     if is_animate:
-        nft_generator = NFTGenerator(input_dir=input_dir, animate=is_animate, fps=fps, n_frame=n_frame)
+        nft_generator = NFTGenerator(input_dir=input_dir, animate=is_animate, fps=fps, n_frame=n_frame, unique=unique)
         sample = nft_generator.generate()
         st.image(sample, caption=[f'frame {i + 1}' for i in range(len(sample))])
     else:
-        nft_generator = NFTGenerator(input_dir=input_dir)
+        nft_generator = NFTGenerator(input_dir=input_dir, unique=unique)
         sample = nft_generator.generate()
         st.image(sample, caption="sample")
