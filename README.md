@@ -37,6 +37,10 @@ python3 generate.py [input_dir] [output_dir] [how many do ya want]
 
 ## advance feature
 
+### option flag
+
+`--unique` generate unique combination only. however it will not be random. (will generate in predictable sequence) 
+
 ### animation
 
 `--animate` to activate feature
