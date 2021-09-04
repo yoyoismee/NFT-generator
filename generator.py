@@ -4,15 +4,19 @@ from PIL import Image
 from glob import glob
 from numpy.random import choice
 import os
+from itertools import product
 
 
 class NFTGenerator:
-    def __init__(self, input_dir, animate=False, n_frame=1, fps=1, reverse=False):
+    def __init__(self, input_dir, animate=False, n_frame=1, fps=1, reverse=False, unique=False):
         self.input_dir = input_dir
         component = [p for p in os.listdir(self.input_dir) if not p.startswith('.')]
         component = sorted(component, reverse=reverse)
         component = [glob(self.input_dir + f"/{c}/*") for c in component]
         self.component = [c for c in component if len(c) > 0]
+        self.unique = unique
+        if unique:
+            self._options_product = product(*self.component)
         self.n_frame = n_frame
         self.animate = animate
         self.fps = fps
@@ -20,11 +24,16 @@ class NFTGenerator:
     def generate(self, save_path=None, file_name=None):
         frames = []
         parts = []
-        for part in self.component:
-            part_option = choice(part, 1)[0]
-            parts.append(part_option)
-            if os.path.isdir(part_option):
-                parts[-1] = [p for p in sorted(glob(part_option + '/*')) if not p.startswith('.')]
+        if not self.unique:
+            for part in self.component:
+                part_option = choice(part, 1)[0]
+                parts.append(part_option)
+        else:
+            parts = list(next(self._options_product))
+
+        for i in range(len(parts)):
+            if os.path.isdir(parts[i]):
+                parts[i] = [p for p in sorted(glob(parts[i] + '/*')) if not p.startswith('.')]
 
         for i in range(int(self.n_frame)):
             new_img = None
