@@ -39,9 +39,9 @@ class NFTGenerator:
             new_img = None
             for p in parts:
                 if type(p) is list:
-                    tmp = Image.open(p[i])
+                    tmp = Image.open(p[i]).convert("RGBA")
                 else:
-                    tmp = Image.open(p)
+                    tmp = Image.open(p).convert("RGBA")
                 if new_img is None:
                     new_img = tmp
                 else:
